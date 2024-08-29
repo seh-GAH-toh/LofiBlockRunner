@@ -39,4 +39,4 @@ jobs:
         run: mv ./godot/* /usr/local/bin
 
       - name: Export Game
-        run: godot --headless --path ${{ github.workspace }} --export-release "Linux/X11" /var/builds/lofiblockrunner.x86_64
+        run: sudo godot --headless --path ${{ github.workspace }} --export-release "Linux/X11" /var/builds/lofiblockrunner.x86_64
