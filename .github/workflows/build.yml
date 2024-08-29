@@ -1,0 +1,29 @@
+name: Itch.io Production Deployment
+env:
+  itch_project: arthursegato/lofiblockrunner
+on:
+  push:
+jobs:
+  Setup-Godot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Ubuntu
+        run: sudo apt-get update && sudo apt-get install -y
+
+      - name: Install dependencies
+        run: sudo apt-get install unzip -y
+
+      - name: Download Godot
+        run: wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip
+
+      - name: Unpack Godot
+        run: unzip ./Godot_v4.3-stable_mono_linux_x86_64.zip
+
+      - name: Move Godot to PATH
+        run: mv ./Godot_v4.3-stable_mono_linux_x86_64/Godot_v4.3-stable_mono_linux.x86_64 /usr/local/bin/godot && mv ./Godot_v4.3-stable_mono_linux_x86_64/GodotSharp /usr/local/bin/GodotSharp
+  Build-Linux:
+    needs: Set-Up-Godot
+    runs-on: ubuntu-latest
+    steps:
+      - name: Export Game
+        run: godot --headless --path ${{ github.workspace }} --export-release "Linux/X11" /var/builds/lofiblockrunner.x86_64
