@@ -5,6 +5,7 @@ on:
   push:
 jobs:
   Setup-Godot:
+    runs-on: ubuntu-latest
     steps:
       - name: Download Godot
         run: wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip
