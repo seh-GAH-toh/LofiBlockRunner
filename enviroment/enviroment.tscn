@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://qf8etxytsuiv"]
+
+[ext_resource type="PackedScene" uid="uid://lfn37q6mtgat" path="res://enviroment/platform.tscn" id="1_sf7f7"]
+[ext_resource type="PackedScene" uid="uid://bs7piy45hchrn" path="res://enviroment/barrier.tscn" id="2_xt566"]
+
+[sub_resource type="Sky" id="Sky_nya2l"]
+
+[sub_resource type="Environment" id="Environment_hkpiv"]
+background_mode = 1
+background_color = Color(0.913725, 0.913725, 0.913725, 1)
+sky = SubResource("Sky_nya2l")
+fog_enabled = true
+fog_light_color = Color(0.913725, 0.913725, 0.913725, 1)
+fog_density = 0.02
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dh12"]
+size = Vector3(15, 15, 1)
+
+[node name="Enviroment" type="WorldEnvironment"]
+environment = SubResource("Environment_hkpiv")
+
+[node name="Platform" parent="." instance=ExtResource("1_sf7f7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -200)
+
+[node name="BarrierLeft" parent="." instance=ExtResource("2_xt566")]
+
+[node name="BarrierRight" parent="." instance=ExtResource("2_xt566")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="BarrierEnd" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BarrierEnd"]
+shape = SubResource("BoxShape3D_3dh12")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.782608, -0.365905, 0.503625, 0, 0.809017, 0.587785, -0.622515, -0.460006, 0.633143, 0, 5, 0)
+light_color = Color(1, 0.956863, 0.839216, 1)
+shadow_enabled = true
+shadow_bias = 0.05
+shadow_normal_bias = 0.04

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://db84mggjiunkg"]
+
+[ext_resource type="Script" path="res://player/Player.cs" id="1_bkg02"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_af0kq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouhb4"]
+albedo_color = Color(0.866667, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q31de"]
+material = SubResource("StandardMaterial3D_ouhb4")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_bkg02")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_af0kq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_q31de")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30723, 3.06974)

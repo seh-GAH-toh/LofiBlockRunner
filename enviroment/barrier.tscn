@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs7piy45hchrn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nwecf"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bm8iw"]
+size = Vector3(1, 10, 10)
+
+[node name="Barrier" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_nwecf")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bm8iw")
