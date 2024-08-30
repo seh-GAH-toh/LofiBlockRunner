@@ -36,7 +36,7 @@ jobs:
           path: ./godot/
 
       - name: Install Godot PATH
-        run: sudo mv ./godot/* /usr/local/bin
+        run: echo "./godot/*" >> $GITHUB_PATH
 
       - name: Export Game
         run: sudo godot --headless
