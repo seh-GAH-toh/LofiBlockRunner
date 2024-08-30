@@ -41,6 +41,7 @@ jobs:
       - name: Verify PATH
         run: |
         echo "Current PATH: $PATH"
+        which godot
 
       - name: Export Game
         run: sudo godot --headless
