@@ -39,4 +39,4 @@ jobs:
         run: sudo mv ./godot/* /usr/local/bin
 
       - name: Export Game
-        run: godot --headless
+        run: sudo godot --headless
