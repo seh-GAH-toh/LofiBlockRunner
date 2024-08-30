@@ -38,8 +38,5 @@ jobs:
       - name: Install Godot PATH
         run: sudo mv ./godot/* /usr/local/bin
 
-      - name: debug
-        run: ls /usr/local/bin
-
-      #- name: Export Game
-      #  run: sudo godot --headless --path ${{ github.workspace }} --export-release "Linux/X11" /var/builds/lofiblockrunner.x86_64
+      - name: Export Game
+        run: godot --headless
