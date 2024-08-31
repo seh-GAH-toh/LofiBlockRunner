@@ -36,10 +36,10 @@ jobs:
           path: ./godot/
 
       - name: Install Godot PATH
-        run: echo "$HOME/godot/*" >> $PATH
+        run: echo "$HOME/godot/*" >> $GITHUB_PATH
 
       - name: Verify PATH
-        run: echo $GITHUB_PATH
+        run: echo $GITHUB
 
       - name: Export Game
         run: sudo godot --headless
