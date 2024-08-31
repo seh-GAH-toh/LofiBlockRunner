@@ -35,14 +35,14 @@ jobs:
           name: godot
           path: ./godot/
 
-      - name: Make godot executable
+      - name: Make Godot executable
         run: chmod +x ./godot/godot
 
       - name: Install godot
         run: sudo mv ./godot/* /usr/local/bin/
 
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Export Game
-        run: godot --headless --path $HOME --export-release "Linux" lofiblockrunner.deb
+        run: godot --headless --path . --export-release "Linux" ./builds/linux/lofiblockrunner.deb
