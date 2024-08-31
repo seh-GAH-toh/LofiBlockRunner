@@ -40,8 +40,8 @@ jobs:
 
       - name: Verify PATH
         run: |
-          echo "Current PATH: $PATH"
-          which godot
+          echo "Current PATH: $GITHUB_PATH"
+          which godoto
 
       - name: Export Game
         run: sudo godot --headless
