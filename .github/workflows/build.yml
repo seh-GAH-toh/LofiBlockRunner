@@ -41,6 +41,9 @@ jobs:
       - name: Install godot
         run: sudo mv ./godot/* /usr/local/bin/
 
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: check directory
         run: ls
 
