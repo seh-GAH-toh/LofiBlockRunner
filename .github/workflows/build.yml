@@ -36,7 +36,7 @@ jobs:
           path: ./godot/
 
       - name: Make godot executable
-        run: chmod +x ./godot/godot
+        run: ls
 
       - name: Install godot
         run: sudo mv ./godot/* /usr/local/bin/
