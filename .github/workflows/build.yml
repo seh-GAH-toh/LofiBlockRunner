@@ -39,7 +39,7 @@ jobs:
         run: echo "$HOME/godot/*" >> $GITHUB_PATH
 
       - name: Verify PATH
-        run: echo $GITHUB
+        run: echo $PATH
 
       - name: Export Game
         run: sudo godot --headless
