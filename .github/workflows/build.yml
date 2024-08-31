@@ -35,8 +35,11 @@ jobs:
           name: godot
           path: ./godot/
 
-      - name: Install Godot PATH
-        run: echo "$HOME/godot/godot" >> $GITHUB_PATH
+      - name: Make godot executable
+        run: chmod +x ./godot/godot
+
+      - name: Install godot
+        run: sudo mv ./godot/* /usr/local/bin/
 
       - name: Verify PATH
         run: echo $PATH
