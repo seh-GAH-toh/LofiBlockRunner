@@ -36,13 +36,13 @@ jobs:
           path: ./godot/
 
       - name: Make godot executable
-        run: ls
+        run: chmod +x ./godot/godot
 
       - name: Install godot
         run: sudo mv ./godot/* /usr/local/bin/
 
-      - name: Verify PATH
-        run: echo $PATH
+      - name: check directory
+        run: ls
 
-      - name: Export Game
-        run: sudo godot --headless
+      #- name: Export Game
+      #  run: sudo godot --headless --path path_to_your_project --export-release my_export_preset_name game.exe
