@@ -10,12 +10,18 @@ jobs:
   Setup-Godot:
     runs-on: ubuntu-latest
     steps:
-      - name: Download and Unpack Godot
+      - name: Download Godot
         run: |
           wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip -O godot-engine.zip
           wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_export_templates.tpz -O export-templates.tpz
+
+      - name: Unpack Godot
+        run: |
           unzip godot-engine.zip -d ./godot-engine
           unzip export-templates.tpz -d ./godot-engine
+
+      - name: Prepare Godot
+        run: |
           mv ./godot-engine/Godot_v4.3-stable_mono_linux.x86_64 ./godot-engine/godot
           mv ./godot-engine/templates/* ./godot-engine/
 
