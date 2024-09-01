@@ -8,22 +8,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Godot
-        run: wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip
+        run: wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip -O godot-engine.zip
 
       - name: Unpack Godot
-        run: unzip ./Godot_v4.3-stable_mono_linux_x86_64.zip
+        run: unzip ./godot-engine.zip
+
+      - name: Download Export Templates
+        run: wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_export_templates.tpz -O export-templates.tpz
+
+      - name: Unpack Export Templates
+        run: unzip ./export-templates.tpz
 
       - name: Prepare Godot artifact
         run: |
-          mkdir -p ./godot
-          mv ./Godot_v4.3-stable_mono_linux_x86_64/Godot_v4.3-stable_mono_linux.x86_64 ./godot/godot
-          mv ./Godot_v4.3-stable_mono_linux_x86_64/GodotSharp ./godot/GodotSharp
+          mv ./godot-engine/Godot_v4.3-stable_mono_linux.x86_64 ./godot-engine/godot
+          mv ./export-templates/templates/* ./godot-engine/
 
       - name: Upload Godot artifact
         uses: actions/upload-artifact@v4
         with:
           name: godot
-          path: ./godot/
+          path: ./godot-engine/
 
   Build-Linux:
     needs: Setup-Godot
@@ -33,13 +38,18 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: godot
-          path: ./godot/
+          path: ./godot-engine/
 
       - name: Make Godot executable
-        run: chmod +x ./godot/godot
+        run: chmod +x ./godot-engine/godot
 
       - name: Install godot
-        run: sudo mv ./godot/* /usr/local/bin/
+        run: |
+          mv ./godot-engine/godot /usr/local/bin/godot
+          mv ./godot-engine/GodotSharp /usr/local/bin/GodotSharp
+
+      - name: Install Export Templates
+        run: sudo mv ./godot-engine/* /home/runner/.local/share/godot/export_templates/4.3.stable.mono/
 
       - name: Checkout code
         uses: actions/checkout@v4
