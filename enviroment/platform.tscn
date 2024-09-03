@@ -9,7 +9,6 @@ size = Vector3(15, 1, 500)
 [sub_resource type="BoxMesh" id="BoxMesh_6h70n"]
 
 [node name="Platform" type="StaticBody3D"]
-collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_ddhfi")
 metadata/_edit_group_ = true
 

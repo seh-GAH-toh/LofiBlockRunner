@@ -23,9 +23,11 @@ environment = SubResource("Environment_hkpiv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -200)
 
 [node name="BarrierLeft" parent="." instance=ExtResource("2_xt566")]
+collision_layer = 1
 
 [node name="BarrierRight" parent="." instance=ExtResource("2_xt566")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+collision_layer = 1
 
 [node name="BarrierEnd" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.5)
